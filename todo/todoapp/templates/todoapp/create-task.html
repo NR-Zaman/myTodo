@@ -1,0 +1,61 @@
+{% extends "todoapp/base.html" %}
+{% block title %}Create Task{% endblock title %}
+
+{% block content %}
+<!--===========  start of form header  ==========-->
+            <div class="pt-3 pb-2 mb-3 border-bottom">
+                <h2>Create Task</h2>
+            </div>
+            <!--===========  End of form header  ==========-->
+            <!--===========  start of create Form ==========-->
+            <div class="card">
+                <div class="card-body">
+                    <form class="row g-3 needs-validation" method="POST">
+                        {% csrf_token %}
+                        <div class="col-md-12">
+                            <label class="form-label">
+                                <span class="text-danger me-1">*</span>
+                                Task Name
+                            </label>
+                            <input type="text" class="form-control" name="taskname" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Dadeline</label>
+                            <input type="datetime-local" name="dadeline" class="form-control " required>
+                        </div>
+
+                          <div class="col-md-6">
+                            <label class="form-label">
+                                Status
+                            </label>
+                            <select class="form-select" name="status">
+                                <option selected disabled>Status...</option>
+                                <option value="Not Started">Not started</option>
+                                <option value="Running">Running</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p>Details</p>
+                            <textarea name="details" class="form-control"></textarea>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p>Add Comment</p>
+                            <textarea name="comment" class="form-control"></textarea>
+                        </div>
+
+
+                        <div class="col-md-12 float-end">
+                        <span class="float-end">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a href="/task-list" class="btn btn-danger">Cancel</a>
+                        </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--===========  End of create Form ==========-->
+
+{%  endblock content  %}

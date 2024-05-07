@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App (CURD)</title>
+    <link rel="stylesheet" href="{% static 'todoapp/css/lib/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'todoapp/css/style.css' %}">
+</head>
+
+<body>
+
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0.5 shadow justify-content-between px-2">
+        <a class="navbar-brand navbar-head col-md-3 col-lg-2  px-3" href="/">MyTodo</a>
+
+
+        {% if user.username %}
+        <div class="dropdown dropdown-menu-end">
+
+            
+            <button type="button" class="btn btn-dark  dropdown-toggle  btn-align" data-bs-toggle="dropdown">
+                {{ user.username }}
+            </button>
+            <ul class="dropdown-menu drop-content">    
+                <li>
+                    <a class="dropdown-item" href="/logout">
+                        <i class="fas fa-sign-out-alt me-2"></i>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+       
+        </div>
+
+        {% else %}
+        <a href="/login" class="btn btn-dark ">Login</a>
+        {% endif %}
+
+
+    </header>
+
+
+    {% if user.username %}
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse overflow-auto">
+            <div class="position-sticky pt-4">
+                <ul class="nav flex-column">
+                    <li class="nav-item active">
+                        <a class="nav-link  btn-toggle "  href="/">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashbord
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link  btn-toggle "  href="/task-list">
+                            <i class="fas fa-list-ul"></i>
+                            My Task
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <!--===========  start of Dashbord header  ==========-->
+
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h2>Dashboard</h2>
+                <div>
+                    <a  href="/task-list" class="btn btn-primary btn-color">
+                        <i class="fas fa-list me-1 text-clr "></i>
+                        Task List
+                    </a>
+                    <a href="/create-task" class="btn btn-primary btn-color">
+                        <i class="fas fa-calendar-plus me-1 text-clr"></i>
+                        Create Task
+                    </a>
+                 
+                </div>
+            </div>
+            <!--===========  End of Dashbord header  ==========-->
+            <!--====start of dashboard element=====-->
+
+
+            <div class="row g-3">
+
+                
+                
+
+            </div>
+            <!--====end of dashboard element=====-->
+
+        </main>
+
+        </div>
+    </div>
+
+
+
+    {% else %}
+
+    <div class="h-100 d-flex align-items-center justify-content-center flex-column">
+        <div class="w-100 mt-5 p-2 m-auto auth-max-w-fixed">
+            <div class="my-5 text-center"> 
+
+
+                <h1>Wellcome To MYTODO</h1> 
+                <div class="my-5"><h5>Don't have an account ???</h5>
+                    <a href="/register" class="btn btn-dark ">Register</a>
+                </div>
+                
+                <h5>Alrady have an account ???</h5>
+                 <a href="/login" class="btn btn-dark ">Login</a>
+                
+            </div>
+        </div>
+        
+       
+    </div>
+    {% endif %}
+
+
+
+
+
+  
+
+
+
+
+    <div class="container my-2">
+
+
+
+
+    </div>
+
+
+
+    <script src="{% static 'todoapp/js/lib/font-awesome.5.15.4.min.js' %}"></script>
+    <script src="{% static 'todoapp/js/lib/bootstrap.bundle.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% extends "todoapp/base.html" %}
+{% block title %}Create Task{% endblock title %}
+
+{% block content %}
+<!--===========  start of form header  ==========-->
+            <div class="pt-3 pb-2 mb-3 border-bottom">
+                <h2>Details</h2>
+            </div>
+            <!--===========  End of form header  ==========-->
+            <div class="card">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <div class="form-control fw-bold">{{ task.taskname }}</div>
+                                <label class="fs-6">Task Name</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <div class="form-control fw-bold">{{ task.dadeline }}</div>
+                                <label class="fs-6">Date Line</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <div class="form-control fw-bold">{{ task.status }}</div>
+                                <label class="fs-6">Status</label>
+                            </div>
+                        </div>
+    
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <div class="form-control fw-bold"> {{ task.details }}
+                                </div>
+                                <label class="fs-6">Details</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <div class="form-control fw-bold"> {{ task.comment }}
+                                </div>
+                                <label class="fs-6">comment</label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 float-end">
+                            <span class="float-end">
+                                <a href="/edit/{{ task.id }}" class="btn btn-primary">Edit</a>
+                                <a href="/task-list" class="btn btn-danger">Cancel</a>
+                            </span>
+                            </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--===========  End of details view ==========-->
+        
+{%  endblock content  %}

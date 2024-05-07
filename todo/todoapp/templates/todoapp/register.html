@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Todo (CURD)</title>
+    <link rel="stylesheet" href="{% static 'todoapp/css/lib/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'todoapp/css/style.css' %}">
+</head>
+
+<body class="h-100 d-flex align-items-center justify-content-center flex-column">
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <h5 style="color: #b22222;">{{message}}</h5>
+                    {% endfor %}
+                {% endif %}
+    <main class="w-100 p-2 m-auto auth-max-w-fixed mt-5">
+        <div class="card shadow-lg p-3 ">
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <h2 class="mt-2 fw-bold">Registration</h2>
+                </div>
+
+                
+
+                <form action="#" class="row g-3 needs-validation" method="POST">
+                    {% csrf_token %}
+                    <!-- <div class="col-md-6">
+                        <input type="text" name="firstname" class="form-control" placeholder="Fast Name" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <input type="text" name="lastname" class="form-control" placeholder="Last Name">
+                    </div> -->
+
+                    <div class="col-md-12">
+                        <input type="email" name="email" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" name="username" class="form-control" placeholder="UserName" required>
+                    </div>
+
+                    <div class="col-md-12">
+                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    </div>
+
+                    <div class="d-grid">
+                        <input type="submit" class="btn btn-primary" value="Register">
+                        <span class="mt-2 text-center ">Already have an account?<a class="text-decoration-none ms-2" href="/login">Login</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="sticky-footer bg-light footer-fixed-bottom ">
+        <div class="container-fluid footer-content">
+            <div class="d-block text-center d-md-flex align-items-center justify-content-between">
+                <!-- <div class="d-inline-flex">
+                    <a class="text-secondary footer-item text-decoration-none me-2" href="#">About</a>
+                    <a class="text-secondary footer-item text-decoration-none me-2" href="#">Help</a>
+                    <a class="text-secondary footer-item text-decoration-none me-2" href="#">Terms of Use</a>
+                    <a class="text-secondary footer-item text-decoration-none me-2" href="#">Privacy Policy</a>
+                </div> -->
+                <div class="text-secondary footer-item"> 2024 nrz.cse</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'todoapp/js/lib/font-awesome.5.15.4.min.js' %}"></script>
+    <script src="{% static 'todoapp/js/lib/bootstrap.bundle.js' %}"></script>
+</body>
+</html>

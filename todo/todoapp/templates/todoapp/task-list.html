@@ -1,0 +1,108 @@
+{% extends "todoapp/base.html" %}
+{% block title %}Create Task{% endblock title %}
+
+{% block content %}
+    <!--===========  start of form header  ==========-->
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h2>My Tasks</h2>
+
+
+        <div>
+            
+            <a href="/create-task" class="btn btn-primary btn-color">
+                <i class="fas fa-calendar-plus me-1 text-clr"></i>
+                Create Task
+            </a>
+         
+        </div>
+    </div>
+    <!--===========  End of form header  ==========-->
+    <!--===========  start of dashboard-table  ==========-->
+            <div class="admin-table">
+                <table class="table table-bordered">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>
+                            <a href="#" class="text-white text-decoration-none">
+                                Task Name
+                            </a>
+                        </th>
+                        <th>
+                            <a href="#" class="text-white text-decoration-none">
+                                Dateline
+                            </a>
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+                   {% for task in task %}
+
+                    <tr>
+                        <td> {{ task.taskname }}</td>
+                        <td> {{ task.dadeline }}</td>
+                        <td> 
+                            {% if task.status == "Not Started" %}
+                                    <button class="btn btn-sm btn-danger btn-disable">{{ task.status }}</button>
+                                {% elif task.status == "Running" %}
+                                    <button class="btn btn-sm btn-primary btn-disable">{{ task.status }}</button>
+                                {% elif task.status == "Completed" %}
+                                     <button class="btn btn-sm btn-success btn-disable">{{ task.status }}</button>
+                            {% endif %}
+                          
+
+
+
+
+                        </td>
+                        <td class="text-center">
+
+                            <div class="dropdown">
+                                <a class="btn-sm px-3 cursor-pointer" data-bs-toggle="dropdown">
+                                    <i class="fas fa-ellipsis-v text-dark"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{% url 'view' task.id %}" class="dropdown-item text-left">
+                                            <i class="fas fa-binoculars me-2"></i>
+                                            View
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/edit/{{ task.id }}" class="dropdown-item text-left">
+                                            <i class="fas fa-pen-nib me-2"></i>
+                                            Edit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'delete' task.taskname %}" class="dropdown-item text-left">
+                                            <i class="fas fa-trash-alt me-2"></i>
+                                            Delete
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- <a href="{% url 'delete' task.taskname %}">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </a>
+                            <a href="{% url 'view' task.id %}">
+                                <button type="submit" class="btn btn-danger">View</button>
+                            </a>
+                            <a href="/edit/{{ task.id }}"><span class="glyphicon glyphicon-pencil" >Edit</span></a> -->
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+            <!--===========  End of dashboard-table  ==========-->
+
+{%  endblock content  %}
